@@ -5,9 +5,44 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Café SA</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1/dist/aframe-master.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/super-hands@3/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-teleport-controls@0.3.1/index.min.js"></script>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <!-- <div id="app"></div>
+    <script type="module" src="/main.js"></script> -->
+    <a-scene stats>
+      <a-assets>
+        <a-asset-item id="map" src="./assets/map.glb"></a-asset-item>
+        <a-image id="grass" src="./assets/grass.jpg"></a-image>
+        <a-image id="vignette" src="./assets/vignette.png"></a-image>
+      </a-assets>
+
+      <a-entity id="rig" movement-controls="speed: 0.15" position="0 0 5" >
+        <a-entity tracked-controls="controller: 0; idPrefix: OpenVR">
+          <a-camera>
+            <a-image id="dyn-fov" src="#vignette" position="0 0 -0.3" scale="1 1 1" opacity="0"></a-image>
+          </a-camera>
+        </a-entity>
+      </a-entity>
+
+      <a-entity id="ambientLight" light="color: #BBB; type: ambient; castShadow: false"></a-entity>
+      <a-entity id="pointLight" position="1.68618 2.49325 -2.77044" light="type: point; castShadow: false"></a-entity>
+      <a-entity id="pointLight" position="-2.35975 2.49325 -2.77044" light="type: point; castShadow: false"></a-entity>
+      <a-entity id="pointLight" position="2.1868 7.45109 4.46392" light="type: point; castShadow: false"></a-entity>
+
+      <a-entity gltf-model="#map"></a-entity>
+
+      <a-plane id="floor" rotation="-90 0 0" width="100" height="100" color="#FFF" material="src: #grass"></a-plane>
+
+      <!-- Sky --> 
+      <a-sky src="360_seashore.jpg"></a-sky>
+
+      </a-scene>
   </body>
 </html>
