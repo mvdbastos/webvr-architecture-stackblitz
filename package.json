@@ -8,5 +8,13 @@
   },
   "devDependencies": {
     "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "aframe": "^1.3.0",
+    "aframe-event-set-component": "^5.0.0",
+    "aframe-extras": "^6.1.1",
+    "aframe-inspector": "^1.3.0",
+    "aframe-teleport-controls": "^0.3.1",
+    "super-hands": "^3.0.2"
   }
 }
